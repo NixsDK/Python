@@ -1,10 +1,10 @@
-workhours = int(input('Input your work hours: '))
-payrate = float(input('Input your pay rate: '))
-addrate = float(input('Input additional payrate for hours above 40: '))
+work_hours = int(input('Input your work hours: '))
+pay_rate = float(input('Input your pay rate: '))
+add_rate = float(input('Input additional payrate for hours above 40: '))
 
-if workhours>=40:
-    salary = (payrate*40) + (((workhours-40)*payrate)*addrate)
+if work_hours>=40:
+    salary = (pay_rate*40) + (((work_hours-40)*pay_rate)*add_rate)
 else:
-    salary = workhours*payrate
+    salary = work_hours*pay_rate
 
 print('Your salary is: ' + str(salary))
