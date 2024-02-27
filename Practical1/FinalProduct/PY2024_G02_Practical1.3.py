@@ -26,9 +26,10 @@ def validate_positive_number(value, prompt):
         except ValueError:
             print('Error: Please enter a numeric value.')
 
-work_hours = validate_positive_number('Input your work hours: ')
-pay_rate = validate_positive_number('Input your pay rate: ')
-additional_rate = validate_positive_number('Input additional pay rate for hours above 40: ')
+
+work_hours = validate_positive_number('Input your work hours: ', 'Enter a positive number for work hours: ')
+pay_rate = validate_positive_number('Input your pay rate: ', 'Enter a positive number for pay rate: ')
+additional_rate = validate_positive_number('Input additional pay rate for hours above 40: ', 'Enter a positive number for additional pay rate: ')
 
 total_salary = calculate_salary(work_hours, pay_rate, additional_rate)
 print_salary(total_salary)
