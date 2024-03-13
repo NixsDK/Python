@@ -1,5 +1,4 @@
 def compute_wage (work_hours, pay_rate):
-    gross_pay = 0
     if work_hours > 40:
         gross_pay = ((work_hours - 40) * pay_rate * 1.25) + 40 * pay_rate
 
