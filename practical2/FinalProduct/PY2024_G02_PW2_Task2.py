@@ -43,5 +43,5 @@ while True:
     except:
         print('Please input numeris value!')
 
-sumbol_size=size_input*7
-eight(sumbol_size)
+symbol_size=size_input*7
+eight(symbol_size)
