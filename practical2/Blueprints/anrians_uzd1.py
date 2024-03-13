@@ -1,5 +1,4 @@
 def compute_wage (hours, pay_rate):
-    pay=0
     if hours >= 40:
         pay=pay_rate * 40 + (hours - 40) * pay_rate * 1.25
     else:
@@ -12,7 +11,7 @@ while True:
         input_hours = int(input('Input your work hours: '))
         break
     except:
-        print('Please enter numeric value!\n')
+        print('Please enter numeric value!')
 
 while True:
     try:
