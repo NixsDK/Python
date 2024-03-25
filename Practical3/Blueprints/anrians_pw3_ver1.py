@@ -1,3 +1,4 @@
+# tikko sapratu ka nepaireizi izlasiju uzdevumu
 file = open('cereals.csv')
 highest = 0
 lowest = 100
