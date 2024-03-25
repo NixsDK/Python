@@ -10,8 +10,10 @@ h_low_name = ''
 h_high_rating = 0
 h_high_name = ''
 
-total_rating = 0
-line_count = 0
+c_total_rating = 0
+c_line_count = 0
+h_total_rating = 0
+h_line_count = 0
 
 file = open('cereals.csv')
 
@@ -32,6 +34,9 @@ for line in file:
         if rating > c_high_rating:
             c_high_rating = rating
             c_high_name = name
+
+        c_total_rating += rating
+        c_line_count += 1
     
     if re.search(',H,*', line):
         if rating < h_low_rating:
@@ -42,16 +47,20 @@ for line in file:
             h_high_rating = rating
             h_high_name = name
 
-    total_rating += rating
-    line_count += 1
+        h_total_rating += rating
+        h_line_count += 1
+
+
 file.close
 
-if line_count > 0:
-    average = total_rating / line_count
-    print('Highest rating C type cereals are', c_high_name, 'with the rating', c_high_rating)
-    print('Lowest rating C type cereals are', c_low_name, 'with the rating', c_low_rating)
-    print('Highest rating H type cereals are', h_high_name, 'with teh rating', h_high_rating)
-    print('Lowest rating H type cereals are', h_low_name, 'with the ratning', h_low_rating)
-    print('Average rating between all cereals is', average)
-else:
+try:
+    c_average = c_total_rating / c_line_count
+    h_average = h_total_rating / h_line_count
+    print('Highest rating cold type cereals are', c_high_name, 'with the rating', c_high_rating)
+    print('Lowest rating cold type cereals are', c_low_name, 'with the rating', c_low_rating)
+    print('Average rating between all cold type cereals is', c_average)
+    print('Highest rating hot type cereals are', h_high_name, 'with teh rating', h_high_rating)
+    print('Lowest rating hot type cereals are', h_low_name, 'with the ratning', h_low_rating)
+    print('Average rating between all hot type cereals is', h_average)
+except:
     print('Something went wrong')
