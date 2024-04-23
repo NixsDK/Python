@@ -11,6 +11,7 @@ for line in file:
     columns = line.strip().split(" ")
     if re.search(search_pattern, line):
         email_sources.append(columns[1])
+file.close()
 
 email_sources.sort()
 
