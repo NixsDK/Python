@@ -13,6 +13,8 @@ for line in file:
         domains = columns[1].split("@")
         email_sources[domains[1]] = email_sources.get(domains[1], 0)  + 1
 
+file.close()
+
 print(email_sources, "\n")
 
 sorted = sorted(email_sources.items(), key=lambda item: item[1])
