@@ -31,7 +31,7 @@ def compare_results(input1, input2):
     first_dict = dict(first_results)
     second_dict = dict(second_results)
 
-    for letter in [chr(i) for i in range(ord('a'), ord('z'))]:
+    for letter in [chr(i) for i in range(ord('a'), ord('z') + 1)]:
         precentage1 = first_dict.get(letter, 0)
         precentage2 = second_dict.get(letter,0)
 
