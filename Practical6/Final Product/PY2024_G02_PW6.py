@@ -96,13 +96,6 @@ def print_emails(emails):
         print(f"{email[0]:<10}{email[1]:<20}{email[2]:<30}{email[3]}")
 
 def main():
-    #print("Current working directory:", os.getcwd())
-    
-    #script_dir = os.path.dirname(os.path.abspath(__file__))
-    #os.chdir(script_dir)
-    
-    #print("Script directory:", script_dir)
-    
     conn = sqlite3.connect('email_data.db')
     cursor = conn.cursor()
     
