@@ -166,7 +166,7 @@ class Fish:
         
         self.tryToEat()
 
-        if self.__starveTick == 16:  #if not eaten for 11 ticks, die
+        if self.__starveTick == 16:  #if not eaten for 16 ticks, die
             self.__world.delThing(self)
         else:
             self.tryToMove() #try to move
@@ -230,7 +230,7 @@ class Fish:
             preyY = randomPrey.getY()
 
             self.__world.delThing(randomPrey)  #delete the Plant
-            self.move(preyX, preyY)            #move to the PLants location
+            self.move(preyX, preyY)            #move to the Plants location
             self.__starveTick = 0
         else:
             self.__starveTick = self.__starveTick + 1
@@ -246,8 +246,10 @@ class Bear:
         self.__yPos = 0
         self.__world = None
 
+        self.__energyTick = 6
         self.__starveTick = 0
         self.__breedTick = 0
+        
 
     def setX(self, newX):
         self.__xPos = newX
@@ -277,6 +279,7 @@ class Bear:
         self.__yPos = newY
         self.__turtle.goto(self.__xPos, self.__yPos)
 
+
     def tryToBreed(self):
         offsetList = [(-1,1), (0,1), (1,1),
                       (-1,0),        (1,0),
@@ -296,6 +299,7 @@ class Bear:
            childThing = Bear()
            self.__world.addThing(childThing, nextX, nextY)
            self.__breedTick = 0     #reset breedTick
+           self.__energyTick = self.__energyTick - 2 #lower energy
 
     def tryToMove(self):
         offsetList = [(-1,1), (0,1), (1,1),
@@ -314,6 +318,7 @@ class Bear:
 
         if self.__world.emptyLocation(nextX, nextY):
            self.move(nextX, nextY)
+           self.__energyTick = self.__energyTick - 1 #lower energy
 
     def liveALittle(self):
         self.__breedTick = self.__breedTick + 1
@@ -322,7 +327,7 @@ class Bear:
 
         self.tryToEat()
 
-        if self.__starveTick == 10:  #if not eaten for 10 ticks, die
+        if self.__starveTick == 10 or self.__energyTick <= 0:  #if not eaten for x ticks or energy 0, die
             self.__world.delThing(self)
         else:
             self.tryToMove()
@@ -347,6 +352,8 @@ class Bear:
             preyY = randomPrey.getY()
 
             self.__world.delThing(randomPrey)  #delete the Fish
+            self.__energyTick = self.__energyTick + 5  # add energy for eating
+            print("Bear, at location", "x:", self.__xPos, "y:", self.__yPos, " ate something, current energy:", self.__energyTick) #"starveTick:", self.__starveTick ja veletos starve tick, tad to vajadzetu maybe velak likt
             self.move(preyX, preyY)            #move to the Fishs location
             self.__starveTick = 0
         else:
@@ -415,10 +422,10 @@ class Plant:
     
 
 def mainSimulation():
-    numberOfBears = 2 #10
-    numberOfFish = 2 #10
-    numberOfPlants = 2 #10
-    worldLifeTime = 100 #2500
+    numberOfBears = 20 #10
+    numberOfFish = 20 #10
+    numberOfPlants = 20 #10
+    worldLifeTime = 25000 #2500
     worldWidth = 50
     worldHeight = 25
 
