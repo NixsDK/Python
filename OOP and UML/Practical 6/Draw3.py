@@ -112,12 +112,12 @@ class Line(GeometricObject):
         return super().getColor()
 
 class Rectangle(GeometricObject):
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height=None):
         super().__init__()
         self.x = x
         self.y = y
         self.width = width
-        self.height = height
+        self.height = height or width
 
     def _draw(self, turtle):
         turtle.up()
@@ -174,19 +174,14 @@ def draw_house():
     canvas = Canvas(800, 600)
 
     # zime majas main dalu
-    house_body = Rectangle(-50, -100, 100, 150)
+    house_body = Rectangle(-50, -100, 200, 150)
     house_body.setColor("blue")
     canvas.draw(house_body)
 
-    # zime jumtu
-    roof = Triangle(-50, 50, 100)
-    roof.setColor("white")
-    canvas.draw(roof)
-
     # zime jumta outline
-    roof_outline = Triangle(-50, 50, 100)
+    roof_outline = Triangle(-50, 50, 200, 120)
     roof_outline.setColor("black")
-    roof_outline.setWidth(2)  # oulaina platums
+    roof_outline.setWidth(2)  # outlaina platums
     canvas.draw(roof_outline)
 
     # zime durvis
@@ -195,7 +190,7 @@ def draw_house():
     canvas.draw(door)
 
     # zime sauli 
-    sun = Circle(150, 150, 30)
+    sun = Circle(170, 170, 30)
     sun.setColor("yellow")
     canvas.draw(sun)
 
